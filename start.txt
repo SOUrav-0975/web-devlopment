@@ -1,0 +1,9 @@
+my name is sourav kumar and currently i am studying web devlopment at sharpner tech.
+
+I am learning tech stack like :-
+                            1.HTML
+                            2.CSS
+                            3.JAVASCRIPT
+                            4.REACT JAVASCRIPT
+                            5.DSA
+and this is demo repository.                        
