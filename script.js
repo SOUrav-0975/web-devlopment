@@ -1,4 +1,4 @@
-console.dir(document)
+/*console.dir(document)
 console.log(document.domain);
 console.log(document.URL);
 
@@ -21,11 +21,19 @@ console.log(headerTitle.innerText)
 
 
 headerTitle.style.borderBottom = "solid 2px #000"
+*/
 
+
+//GET ELEMENTBYCLASSNAME
 let items=document.getElementsByClassName('list-group-item')
 console.log(items)
 
-items[1].textContent="Hello2"
-items[1].style.backgroundcolor ="yellow"
+items[1].textContent="Hello2";
+items[1].style.backgroundColor="yellow";
+items[2].style.backgroundColor= "green"
+
+for(let i=0;i<items.length;i++){
+    items[i].style.fontWeight="bold"
+}
 
 
