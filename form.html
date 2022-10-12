@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_page</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        
+        }
+     body{
+        background-color:teal;
+     }
+     #form_item{
+        border: 2px solid orangered;
+        margin:70px;
+        margin-left: 450px;
+        width:40%;
+        background-color: aqua;
+     }
+     h1{
+        color: darkorange;
+     }
+  #form{
+    margin:10px 25px;
+    padding: 20px;
+    width:70%;
+    
+  }
+  input{
+    width:93%;
+    height:33px;
+    
+  }
+  #date{
+    width:60%;
+  }
+  #time{
+    width:30%;
+  }
+    #heading{
+        text-align: center;
+    }
+    #btn{
+        color: #fff;
+        font-weight: 500;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 20px;
+        width:93%;
+        background-color: coral;
+        cursor: pointer;
+    }
+    #btn:hover{
+background-color: orangered;
+    }
+        
+    </style>
+</head>
+<body>
+    <div id="form_item">
+        <div id="heading">
+            <h1>Book a call</h1>
+            <p>Book a call slot and our representaive will call you within 1hr of selected time.</p>
+         <hr>
+        </div>
+               
+                <form id="form" onsubmit="getData(event)">
+        
+                <label for="name">Name</label><br>
+                <input type="text" id="name"><br>
+                <label for="email">Email</label><br>
+                <input type="email" id="email" ><br>
+                <label for="phone">Phone </label><br>
+                <input type="number" id="phone"><br>
+                <label for="date">Time for call</label><br>
+                <input type="date" id="date">
+                
+                <input type="time" id="time" ><br>
+        
+        
+                <input type="submit" id="btn" value="GET A CALL">
+              </form>
+
+    </div>
+  
+<script>
+    function details(n,e,p,d,t){
+        this.name = n,
+        this.email = e,
+        this.phone = p,
+        this.date = d;
+        this.time = t
+    }
+
+    function getData(e){
+        e.preventDefault()
+    
+    let form = document.getElementById("form")
+    
+    let name = form.name.value;
+    let email = form.email.value;
+    let phone = form.phone.value;
+    let date = form.date.value;
+    let time = form.time.value;
+    
+
+
+    //use of localStorage to store the user data
+    let person1 = new details(name,email,phone,date,time);
+    console.log(person1)
+    
+    let data = JSON.parse(localStorage.getItem("users")) || [];
+    data.push(person1)
+
+    localStorage.setItem("users",JSON.stringify(data))
+
+    form.name.value = null;
+    form.email.value = null;
+    form.phone.value = null;
+    form.date.value = null;
+    form.time.value = null;
+
+    }
+</script>
+
+</body>
+</html>
