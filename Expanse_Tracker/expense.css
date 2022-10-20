@@ -1,0 +1,66 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body{
+ background-color: #fff;
+}
+h1{
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem;
+    color: teal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#container{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+#div1{
+    width:35%;
+    border:5px solid teal;
+    margin:20px;
+    margin-top: 33px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+     z-index: 90;
+}
+#div2{
+    width:55%;
+    margin:20px;
+    margin-top: 33px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    z-index: 70;
+}
+#form{
+    margin:1rem;
+    display:grid;
+    grid-template-columns: repeat(1,1fr);
+    gap:20px;
+}
+input{
+    height:33px;
+    font-size: 1.3rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#btn{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    background-color: teal;
+    color:#fff;
+    cursor: pointer;
+}
+#btn:hover{
+color:#fff;
+background-color: brown;
+}
+table{
+    border:5px solid teal;
+}
+table tr td{
+width:100%;
+border:2px solid teal;
+border-collapse: collapse;
+}
