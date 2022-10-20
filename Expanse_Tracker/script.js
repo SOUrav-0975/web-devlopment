@@ -60,7 +60,7 @@ function addExpenses(e){
             td4.style.backgroundColor="coral";
             td4.style.cursor="pointer";
             td4.onclick=() =>{
-               edit(el.amount,el.desc,el.cate)
+               edit(index)
               
             }
             let td5 = document.createElement("td");
@@ -83,12 +83,26 @@ function addExpenses(e){
         })
     }
     displayData();
-    //edit
+   /* //edit
    function edit(amount,desc,cate){
          document.getElementById("amount").value = amount;
         document.getElementById("desc").value =desc;
         document.getElementById("cate").value = cate;
-     }
+     }*/
+
+     function edit(id){
+        let data = JSON.parse(localStorage.getItem("expense")) || [];
+    
+        let newdata = data.map((el,index)=>{
+            document.getElementById("amount").value = el.amount;
+            document.getElementById("desc").value =el.desc;
+            document.getElementById("cate").value = el.cate;
+
+        })
+        localStorage.setItem("expense",JSON.stringify(newdata))
+        displayData()
+   }
+
     function remove(id){
         let data = JSON.parse(localStorage.getItem("expense")) || [];
     
