@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_page</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        
+        }
+  #container{
+    display:flex;
+    align-items: center;
+    justify-content:flex-start;
+    width:100%;
+  }
+     #form_item{
+        border: 5px solid teal;
+        width:40%;
+        background-color: aqua;
+        margin:20px;
+     }
+  input{
+    width:93%;
+    height:33px;
+    margin:auto 10px
+    
+  }
+  label{
+    margin:auto 10px;
+    font-size: 1.5rem;
+  }
+    #btn{
+        color: #fff;
+        font-weight: 500;
+        font-family: Arial, Helvetica, sans-serif;
+        margin:20px 15px;
+        width:93%;
+        background-color: coral;
+        cursor: pointer;
+    }
+    #btn:hover{
+background-color: orangered;
+    }
+    #append{
+        width:55%;
+    }
+    table{
+        border-collapse: collapse;
+    }
+table tr td{
+    border:1px solid teal;
+    width:90%;
+    
+} 
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="form_item">    
+            <form id="form">
+            <label for="name">Name</label><br>
+            <input type="text" id="name" class="form-control" placeholder="Enter Name"><br>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" class="form-control" placeholder="Enter Email Id"><br>
+            <label for="phone">Phone </label><br>
+            <input type="number" id="phone" class="form-control"  placeholder="Phone No..."><br>
+             <input type="submit" id="btn" class="btn btn-success add-btn">
+          </form>
+
+</div>
+<div id="append">
+    <table>
+        <tbody>
+
+        </tbody>
+    </table>
+
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
