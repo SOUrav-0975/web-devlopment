@@ -13,7 +13,7 @@ let email = form.email.value;
 let phone = form.phone.value;
 
 let person1 = new details(name,email,phone);
-axios.post('https://crudcrud.com/api/c497ddf047114241865320f9f6f22811/add_post',person1)
+axios.post('https://crudcrud.com/api/4f17942c032a4d32be009d2203e0c66f/save_post',person1)
 .then((res)=>{
     console.log(res)
 })
