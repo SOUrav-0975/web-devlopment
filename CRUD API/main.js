@@ -82,6 +82,7 @@ function removeUser(id){
   const deleteItems = document.getElementById("id");
   if(deleteItems){
     parentNode.removeChild(deleteItems);
+    showData()
   }
   
 }

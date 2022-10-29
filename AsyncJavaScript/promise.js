@@ -66,3 +66,49 @@ createPost({title:'post-3',body:'this is post-3'})
 }).catch((err)=>console.log(err))
 
 
+//promise.all
+const promise1 = Promise.resolve('HELLO WORLD!');
+const promise2 = 10;
+const promise3 = new Promise ((resolve,reject)=>{
+    setTimeout(resolve,2000,"GOODBYE!")
+})
+Promise.all([promise1,promise2,promise3]).then(values=>{
+    console.log(values);
+})
+
+
+const user = {
+    userName:"sourav",
+    lastactivitytime:"10th of sept"
+};
+
+
+updatelastactivitytime = {
+    return new Promise((resolve,reject) = {
+        setTimeOut(() => {
+            user.lastactivitytime = new Date().getTime();
+            resolve(user.lastactivitytime)
+        },1000)
+    })
+}
+
+userupdatespost(){
+    Promise.all([createPost,updatelastactivitytime])
+    .then(([createPostresolves,updatelastactivitytimeresolves])=>{
+        console.log(updatelastactivitytimeresolves)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
