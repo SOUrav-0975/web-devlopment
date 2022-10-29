@@ -1,60 +1,4 @@
 
-let details = [];
-//form design
-
-let form = `<form onsubmit="save(event)">
-<div class="form-group">
-  <label for="name">Name</label>
-  <input type="text" class="form-control" id="name" placeholder="Enter Name...">
-  
-</div>
-<div class="form-group">
-  <label for="email">Email</label>
-  <input type="email" class="form-control " id="email" placeholder="Enter Email...">
-</div>
-<div class="form-group">
-  <label for="phone">Phone Number</label>
-  <input type="number" class="form-control" id="phone" placeholder="Enter Phone No...">
-</div>
-
-<button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>`;
-
-//table design
-
-function table(item){
-    let table = `<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">No.</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone No.</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody>`;
-      for(let i = 0; i < details.length;i++){
-        table = table + ` <tr>
-        <th scope="row">${i+1}</th>
-        <td>${details[i].name}</td>
-        <td>${details[i].email}</td>
-        <td>${details[i].phone}</td>
-        <td><button type= "button" class="btn btn-warning mt-2" onclick= "edit(${i})"> Edit</button></td>
-        <td><button type= "button" class="btn btn-danger mt-2" onclick= "deleteData(${i})">delete</button></td>
-      </tr>`
-      };
-      table += `</tbody>
-      </table>`;
-      document.getElementById("table").innerHTML=table;
-}
-table()
-document.getElementById("form").innerHTML = form;
-
-
-//collecting data from form;
-
  function save(e){
     e.preventDefault();
 
@@ -68,38 +12,76 @@ document.getElementById("form").innerHTML = form;
    }
 
 
-    let data = {
+    let obj = {
         name : name.value,
         email : email.value,
         phone : phone.value,
     }
-
-   
-    axios.post('https://crudcrud.com/api/4f17942c032a4d32be009d2203e0c66f/save_post',data)
+    axios.post('https://crudcrud.com/api/526a4f07ab944809a77fbe65e7268af0/crud-app',obj)
     .then((res)=>{
-        details.push(data);
+        showData(res.data)
         console.log(res);
-        table();
     })
     .catch((err) => {
        console.log(err)
     })
-  
-   name.value = null;
-   email.value = null;
-    phone.value= null;
     
  }
  window.addEventListener("DOMContentLoaded",() =>{
-    axios.get("https://crudcrud.com/api/4f17942c032a4d32be009d2203e0c66f/save_post")
+    axios.get("https://crudcrud.com/api/526a4f07ab944809a77fbe65e7268af0/crud-app")
     .then((res) => {
         console.log(res);
         for(var i=0; i< res.data.length;i++){
-            details.push(res.data[i]);
-            table()
+            showData(res.data[i]);
+            
         }
     })
     .catch((err) => {
         console.log(err)
     })
+  });
+
+
+  function showData(user){
+   
+    document.getElementById('name').value="";
+    document.getElementById('email').value="";
+    document.getElementById('phone').value="";
+
+    const parentNode=document.getElementById("listOfUsers");
+    const childHTML=` <tr id=${user._id}>
+    <td>${user.name}</td>
+    <td>${user.email}</td>
+    <td>${user.phone}</td>
+    <td><button type= "button" class="btn btn-warning mt-2" onclick= edit('${user._id}')> Edit</button></td>
+    <td><button type= "button" class="btn btn-danger mt-2" onclick = deleteUser('${user._id}')>delete</button></td>
+  </tr>`
+    parentNode.innerHTML += childHTML;
+   
+     
+  }
+  
+
+  //delete
+  function deleteUser(id) {
+   axios.delete(`https://crudcrud.com/api/526a4f07ab944809a77fbe65e7268af0/crud-app/${id}`)
+    .then((res)=>{
+    
+      removeUser(id);
+     
+      console.log(res);
+    
+      
   })
+  .catch((err) => {
+     console.log(err)
+  })
+};
+function removeUser(id){
+  const parentNode = document.getElementById("listOfUsers");
+  const deleteItems = document.getElementById("id");
+  if(deleteItems){
+    parentNode.removeChild(deleteItems);
+  }
+  
+}
