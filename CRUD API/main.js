@@ -53,12 +53,11 @@
     <td>${user.name}</td>
     <td>${user.email}</td>
     <td>${user.phone}</td>
-    <td><button type= "button" class="btn btn-warning mt-2" onclick= edit('${user._id}')> Edit</button></td>
+    <td><button type= "button" class="btn btn-warning mt-2" onclick= editUser('${user._id}''${user.name}','${user.email}','${user.phone}')> Edit</button></td>
     <td><button type= "button" class="btn btn-danger mt-2" onclick = deleteUser('${user._id}')>delete</button></td>
   </tr>`
     parentNode.innerHTML += childHTML;
-   
-     
+        
   }
   
 
@@ -68,10 +67,7 @@
     .then((res)=>{
     
       removeUser(id);
-     
-      console.log(res);
-    
-      
+      console.log(res);  
   })
   .catch((err) => {
      console.log(err)
@@ -84,5 +80,12 @@ function removeUser(id){
     parentNode.removeChild(deleteItems);
     showData()
   }
-  
+}
+//edit details
+function editUser(id,name,email,phone){
+ 
+  document.getElementById('name').value=name;
+  document.getElementById('email').value=email;
+  document.getElementById('phone').value=phone;
+  deleteUser(id)
 }
